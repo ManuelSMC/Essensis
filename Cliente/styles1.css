@@ -1,0 +1,102 @@
+#main-header{
+    background: url(1.jpg);
+    background-repeat:no-repeat ;
+    background-attachment:fixed ;
+    background-size: cover;
+    background-position: center;
+    padding: 180px 0 100px 0;
+    
+    
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+.our-services2 article{
+    width: 25%;
+    float: left;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.si{
+    background-color: BDC0BC;
+    text-align: center;
+    padding: 10px;
+    color: white;  
+}
+h1{
+    font-family: 'Raleway',sans-serif;
+    font-size: 45px;
+    margin-bottom: 10px;
+
+}
+.main-header-content{
+    width: 100%;
+    text-align: center;
+    color:white;
+    margin: 0 auto;
+    padding: 10px;
+
+}
+.main-header-content p{
+    font-family: 'Raleway',sans-serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+    line-height: 30px;
+    
+}
+.button{
+    font-family: 'Raleway',sans-serif;
+    font-size: 20px;
+    color: #fff;
+    background: #DCB580;
+    padding: 10px 30px;
+    /* Eliminamos la decoracion que se le agrega a los enlaces,como el subrayado*/
+    text-decoration: none;
+    font-weight: 500;
+}
+button:hover{
+    color: orange;
+    background:#fff;
+}
+.texto{
+  text-align: justify;
+}
+.our-services{
+    overflow: hidden;
+    color: black;
+    text-align: center;
+}
+.our-services article{
+    width: 50%;
+    float: left;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.our-services article img{
+    width: 100%;
+}
+.si2{
+    text-align: center;
+    padding: 10px; 
+}
+.texto2{
+  text-align: justify;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.imagen{
+  padding: 20px;
+}
+.ali{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+.fondo{
+    background-color: gray;
+}
+.our-services2{
+    text-align: center;
+}
