@@ -38,6 +38,7 @@ include ('functions.php');
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="../Cliente/Carrito.php">  <p>Carrito de compras</p></a></li>
+                <li><a class="dropdown-item" href="../Cliente/compras.php">  <p>Mis compras</p></a></li>
                 <li>
                 <hr class="dropdown-divider">
                 </li>

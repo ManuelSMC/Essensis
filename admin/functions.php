@@ -1,7 +1,7 @@
 <?php
     @session_start();
 
-    $GLOBALS['ruta_raiz'] = "http://localhost/6_blog";
+    $GLOBALS['ruta_raiz'] = "http://localhost/Essensis";
     $GLOBALS['inicio'] = $GLOBALS['ruta_raiz'].'../cliente/index.php';
     $GLOBALS['ruta_raiz_sin_sesion'] = $GLOBALS['ruta_raiz'].'/admin/login_get.php';
     $GLOBALS['suscriptor_dashboard'] = $GLOBALS['ruta_raiz']."/admin/dashboard_suscriptor.php";
@@ -12,7 +12,7 @@
     function connectDatabase(){
         $servername = "localhost";
         $username = "root";
-        $password = "Perfect97";
+        $password = "";
         $database = "essensis";
 
         return mysqli_connect($servername, $username, $password, $database, 3306);
@@ -40,6 +40,13 @@
             $_SESSION['usuario_agregado'] = true;
             header("Location: login_get.php");
         }
+    }
+
+    function getCliente($id_cliente) {
+        $conn = connectDatabase();
+        $consulta = "SELECT * FROM cliente WHERE id_cliente = " . $id_cliente;
+        return mysqli_query($conn, $consulta);
+        closeConnMysql($conn);
     }
 
     function addUser2($nombre, $apellido, $direccion, $usuario, $password, $estatus){
@@ -929,5 +936,23 @@ function tableFac(){
     return mysqli_query($conn, $table_data);
     closeConnMysql($conn);
 }
+
+/* ////////////////////////////// INICIA VENTA Y DETALLE DE VENTA ////////////////////////////////////// */
+
+function getVentasPorCliente($id_cliente){
+    $conn = connectDatabase();
+    $table_data = "SELECT * FROM venta WHERE id_cliente = " . $id_cliente;
+    return mysqli_query($conn, $table_data);
+    closeConnMysql($conn);
+}
+
+function getDetalleVenta($id_venta){  
+    $conn = connectDatabase();
+    $table_data = "SELECT * FROM detalle_venta INNER JOIN venta ON detalle_venta.id_venta = venta.id INNER JOIN cliente ON venta.id_cliente = cliente.id_cliente INNER JOIN inventario ON detalle_venta.id_inventario = inventario.id_inventario INNER JOIN productos ON inventario.id_producto = productos.id WHERE venta.id = ". $id_venta;
+    return mysqli_query($conn, $table_data);
+    closeConnMysql($conn);
+}
+
+/* ////////////////////////////// FIN VENTA Y DETALLE DE VENTA ////////////////////////////////////// */
 
 ?>

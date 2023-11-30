@@ -42,9 +42,9 @@ if (!isset($_SESSION["cliente"])) {
                             foreach ($_SESSION['carrito'] as $inventario_id => $detalle) {
                                 $inv = getInventario($inventario_id);
                                 $prod = getProducto($inv["id_producto"]);
-                                $total = $prod["precio"] * $detalle["cantidad"];
-                                $iva = $total*.16;
-                                $final = $total-$iva;
+                                $total += $prod["precio"] * $detalle["cantidad"];
+                                $iva = $total * .16;
+                                $final = $total + $iva;
                         ?>
                                 <div class="card rounded-3 mb-4">
                               <div class="card-body p-5">
@@ -81,13 +81,11 @@ if (!isset($_SESSION["cliente"])) {
                         <div class="card">
                             <div class="card-body p-4">
                                 <?php if (!empty($_SESSION['carrito'])) { ?>
-                                    <h5 class="text-end">Total sin IVA: $<?= $final ?> MXN</h5>
-                                    <h5 class="text-end">IVA: $<?= $iva ?> MXN</h5>
-                                    <h5 class="text-end">Total: $<?= $total ?> MXN</h5>
+                                    <h5 class="text-end">Subtotal: $<?= number_format($total) ?> MXN</h5>
+                                    <h5 class="text-end">IVA: $<?= number_format($iva) ?> MXN</h5>
+                                    <h5 class="text-end">Total: $<?= number_format($final) ?> MXN</h5>
                                     
-                                    
-
-                                    <a href="../admin/venta.php" type="button" class="btn btn-warning btn-block btn-lg">Realizar Compra</a>
+                                    <a href="../admin/pago.php" type="button" class="btn btn-warning btn-block btn-lg">Pagar</a>
                                 <?php } ?>
                             </div>
                         </div>

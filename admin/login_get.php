@@ -79,14 +79,21 @@
 
         
     ?>
-
       <main>
       <section id="login-register" class="my-5">
             <div class="container">
                 <div class="row justify-content-center align-items-center">
                     <section id="login-user" class="col-12 col-md-6 p-5 bg-light rounded-4">
+                    <div id="email-invalid" class="alert alert-danger" style="display:none">
+                            Tu correo electrónico debe cumplir con los siguientes criterios:
+                            <ul>
+                                <li>Debe contener un texto</li>
+                                <li>Debe contener una arroba (@) enseguida del texto</li>
+                                <li>Debe contener un dominio incluyendo un punto (.) con más de 1 caracter</li>
+                            </ul>
+                        </div>
                         <h2 class="text-center">Iniciar Sesión</h2>
-                        <form method="get" action="login_connection.php">
+                        <form method="get" action="login_connection.php" onsubmit="validateEmail()">
                             <div class="mb-3">
                                 <label for="correo" class="form-label">Correo Electrónico</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico" required>
@@ -106,27 +113,22 @@
       </main>
     
       <script>
-      function validarPasswords() {
-          main_contrasena = document.getElementById("main-contrasena");
-          contrasena_confirmation = document.getElementById("contrasena-confirmation");
-
-          error_message = document.getElementById("error");
-          error_easy_password = document.getElementById("easy-password");
-
-
-          if (main_contrasena.value != contrasena_confirmation.value) {
-              error_message.style.display = "block";
-              event.preventDefault();
-          } else {
-              if (main_contrasena.value == contrasena_confirmation.value) {
-                  if (!main_contrasena.value.match(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%&*.]).{8,}$/)) {
-                    error_message.style.display = "none";
-                    error_easy_password.style.display = "block";
-                      event.preventDefault();
-                  }   
-              }
+          function validateEmail(){
+                
+                // Get our input reference.
+                var emailField = document.getElementById('email');
+                
+                // Define our regular expression.
+                var validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+            
+                // Using test we can check if the text match the pattern
+                if( validEmail.test(emailField.value) ){
+                    return true;
+                }else{
+                    document.getElementById("email-invalid").style.display = "block";
+                    event.preventDefault();
+                }
             }
-          }
       </script>
 
   </body>

@@ -7,7 +7,8 @@ $monto = 0;
 
 if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = array();
-} else {
+} else if($_SESSION['pay'] == true) {
+    unset($_SESSION['pay']);
     // Variable para almacenar el id_venta
     $id_venta = 0;
 
@@ -34,7 +35,6 @@ if (!isset($_SESSION['carrito'])) {
             agregarDetalleVenta($id_venta, $inv_id, $cantidad, $precio_unitario, $subtotal);
         }
     }
-}
 
 $id_cli = $_SESSION['id_cliente'];
 $monto_iva = $monto * 0.16;
@@ -69,5 +69,9 @@ if ($id_venta != 0) {
 // Limpiar la sesión si la venta fue exitosa
 if (isset($_SESSION['ventaHecha']) && $_SESSION['ventaHecha'] == true) {
     unset($_SESSION['carrito']);
+}
+}
+else{
+    echo "Error";
 }
 ?>

@@ -35,6 +35,7 @@ if (!isset($_SESSION["cliente"])) {
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="../Cliente/Carrito.php">  <p>Carrito de compras</p></a></li>
+                <li><a class="dropdown-item" href="../Cliente/compras.php">  <p>Mis compras</p></a></li>
                 <li>
                 <hr class="dropdown-divider">
                 </li>
@@ -152,8 +153,7 @@ if (!isset($_SESSION["cliente"])) {
 
                             <div class="mb-3">
                                 <label for="main-contrasena" class="form-label">Contraseña</label>
-                                <input type="text" class="form-control" name="password" minlength="8"
-                                value="<?php echo $row['password']?>">
+                                <input type="text" class="form-control" name="password" minlength="8" placeholder="Ingresa tu contraseña">
                             </div>
 
                             <div class="mb-3 visually-hidden" >

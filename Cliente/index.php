@@ -41,6 +41,7 @@ include ('../admin/functions.php');
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="Carrito.php">  <p>Carrito de compras</p></a></li>
+                <li><a class="dropdown-item" href="compras.php">  <p>Mis compras</p></a></li>
                 <li>
                 <hr class="dropdown-divider">
                 </li>

@@ -66,9 +66,17 @@ session_start();
                                 <li>Debe contener al menos uno de los siguientes caracteres especiales: @, #, $, %, &, o *. </li>
                             </ul>
                         </div>
+                        <div id="email-invalid" class="alert alert-danger" style="display:none">
+                            Tu correo electrónico debe cumplir con los siguientes criterios:
+                            <ul>
+                                <li>Debe contener un texto</li>
+                                <li>Debe contener una arroba (@) enseguida del texto</li>
+                                <li>Debe contener un dominio incluyendo un punto (.) con más de 1 caracter</li>
+                            </ul>
+                        </div>
 
                         <h2 class="text-center">Registro</h2>
-                        <form id="form-registro" method="get" action="login_connection.php" onsubmit="validarPasswords()">
+                        <form id="form-registro" method="get" action="login_connection.php" onsubmit="validarPasswordsYEmail()">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label mt-3">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre"
@@ -122,7 +130,7 @@ session_start();
     
 
       <script>
-      function validarPasswords() {
+      function validarPasswordsYEmail() {
           main_contrasena = document.getElementById("main-contrasena");
           contrasena_confirmation = document.getElementById("contrasena-confirmation");
 
@@ -141,6 +149,20 @@ session_start();
                       event.preventDefault();
                   }   
               }
+            }
+
+            // Get our input reference.
+            var emailField = document.getElementById('usuario');
+                
+            // Define our regular expression.
+            var validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+        
+            // Using test we can check if the text match the pattern
+            if( validEmail.test(emailField.value) ){
+                return true;
+            }else{
+                document.getElementById("email-invalid").style.display = "block";
+                event.preventDefault();
             }
           }
       </script>
